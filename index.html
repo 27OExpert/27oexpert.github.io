@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- 修改 1：浏览器标签页标题和搜索结果简介 -->
+    <title>Haoyu Wang | Academic Homepage</title>
+    <meta
+      name="description"
+      content="Academic homepage of Haoyu Wang — research and publications."
+    />
+
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <main id="main-content" class="container">
+      <!-- ============================================================
+        修改 2：照片与基本信息
+        - 把 assets/profile-placeholder.svg 换成你的照片，例如 assets/profile.jpg
+        - 建议使用正方形照片，尺寸至少 600 x 600 像素
+        - 修改姓名、学校、邮箱和个人链接
+      ============================================================= -->
+      <header class="profile">
+        <img
+          class="portrait"
+          src="assets/photo.jpg"
+          alt="Portrait of Haoyu Wang"
+          width="210"
+          height="210"
+        />
+
+        <div class="profile-copy">
+          <h1>Haoyu Wang <span> </span></h1>
+
+          <p class="profile-links">
+            Email: why18061297@gmail.com
+            <a
+              href="https://scholar.google.com/citations?user=5UsbgVEAAAAJ&hl=zh-CN"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Google Scholar</a>
+          </p>
+        </div>
+      </header>
+
+      <!-- ============================================================
+        修改 3：个人介绍（按你的要求，只保留两段）
+        直接替换下面两个段落中的文字和链接即可。
+      ============================================================= -->
+      <section class="about" aria-label="About me">
+        <p>
+          I am a second-year Ph.D. student in Computer Science at the
+          Pennsylvania State University, where I am very fortunate to be advised by
+          <a href="https://pwu.netlify.app/">Prof. Pei Wu</a>.
+        </p>
+        <p>
+          My current research focuses on quantum algorithm design and
+          implementation, with an emphasis on practical quantum
+          advantages. I am also interested in leveraging AI to advance quantum
+          computing.
+        </p>
+        <p>
+          Before joining Penn State, I completed a B.S. in Mathematics with a
+          minor in Computer Science and an M.E. in Computer Engineering at USTC,
+          where I was advised by Prof. Xue Chen.
+        </p>
+      </section>
+
+      <!-- ============================================================
+        修改 4：论文列表
+        复制一整段 <article class="publication">...</article> 来新增论文。
+        用 <strong>...</strong> 加粗你自己的姓名。
+      ============================================================= -->
+      <section class="publications" aria-labelledby="publications-title">
+        <h2 id="publications-title">Publications</h2>
+        <p class="publication-note">
+          Authors are listed in alphabetical order unless otherwise stated.
+        </p>
+
+        <div class="publication-list">
+          <article class="publication">
+            <div class="publication-heading">
+              <h3>Exponential Quantum Space Advantage for Approximating Max-SAT in the Streaming Setting</h3>
+              <p class="venue">Manuscript, 2026</p>
+            </div>
+            <p class="authors">
+              <strong>Haoyu Wang</strong>, <a href="https://guangxu-yang.github.io/">Guangxu Yang</a>.
+            </p>
+            <p class="paper-links">
+              <a href="https://arxiv.org/abs/2606.05366" target="_blank" rel="noopener noreferrer">[arXiv]</a>
+              <a href="assets/slides-quantum_streaming_maxksat.pdf" target="_blank" rel="noopener noreferrer">[Slides]</a>
+            </p>
+          </article>
+
+          <article class="publication">
+            <div class="publication-heading">
+              <h3>Randomized and Quantum Lifting for One-Way Conservative NOF Model</h3>
+              <p class="venue">MFCS, 2026</p>
+            </div>
+            <p class="authors">
+              <strong>Haoyu Wang</strong>, <a href="https://pwu.netlify.app/">Pei Wu</a>.
+            </p>
+            <p class="paper-links">
+              <a href="assets/slides-randomized_and_quantum_liftings.pdf" target="_blank" rel="noopener noreferrer">[Slides]</a>
+            </p>
+            </p>
+          </article>
+
+        </div>
+      </section>
+    </main>
+
+  </body>
+</html>

@@ -1,0 +1,273 @@
+:root {
+  /* 想换主题色时，只需要修改下面两行 */
+  --accent: #990000;
+  --gold: #d9ad3a;
+
+  --ink: #282523;
+  --muted: #625d58;
+  --paper: #fffefb;
+  --content-width: 860px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
+  font-size: 17px;
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  width: min(var(--content-width), calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 10;
+  top: 12px;
+  left: 12px;
+  padding: 7px 12px;
+  color: #fff;
+  background: var(--accent);
+  transform: translateY(-160%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+a:focus-visible {
+  outline: 3px solid rgba(217, 173, 58, 0.6);
+  outline-offset: 3px;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 42px;
+  align-items: center;
+  padding-block: 56px 46px;
+}
+
+.portrait {
+  display: block;
+  width: 170px;
+  aspect-ratio: 1;
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile h1 {
+  margin: 0 0 8px;
+  font-size: clamp(2.15rem, 5vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.profile h1 span {
+  margin-left: 0.28em;
+  color: var(--muted);
+  font-family: "Songti SC", "SimSun", serif;
+  font-size: 0.52em;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.profile-links {
+  margin: 0;
+}
+
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin-top: 13px;
+  font-size: 0.9rem;
+}
+
+.profile-links a {
+  font-weight: 600;
+}
+
+.about {
+  max-width: 74ch;
+  padding-block: 6px 52px;
+}
+
+.about p {
+  margin: 0 0 22px;
+}
+
+.about p:last-child {
+  margin-bottom: 0;
+}
+
+.publications {
+  padding-bottom: 64px;
+}
+
+.publications h2 {
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--gold);
+  font-size: 1.65rem;
+  line-height: 1.25;
+}
+
+.publication-note {
+  margin: 8px 0 28px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.publication-list {
+  display: grid;
+  gap: 30px;
+}
+
+.publication-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  gap: 24px;
+  align-items: baseline;
+  margin-bottom: 3px;
+}
+
+.publication h3 {
+  min-width: 0;
+  margin: 0;
+  font-size: 1.03rem;
+  line-height: 1.4;
+}
+
+.authors,
+.paper-links {
+  margin-top: 0;
+  margin-bottom: 2px;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.authors {
+  color: var(--muted);
+}
+
+.venue {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.paper-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 5px;
+}
+
+.paper-links a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.paper-links a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 620px) {
+  .container {
+    width: min(100% - 30px, var(--content-width));
+  }
+
+  .profile {
+    grid-template-columns: 1fr;
+    gap: 27px;
+    padding-block: 44px 40px;
+    text-align: center;
+  }
+
+  .portrait {
+    width: 150px;
+    margin-inline: auto;
+  }
+
+  .profile h1 span {
+    display: block;
+    margin: 8px 0 0;
+    font-size: 0.5em;
+  }
+
+  .profile-links {
+    justify-content: center;
+  }
+
+  .about {
+    padding-bottom: 44px;
+  }
+
+  .publications {
+    padding-bottom: 52px;
+  }
+
+  .publication-heading {
+    gap: 14px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media print {
+  .skip-link {
+    display: none;
+  }
+
+  body {
+    color: #000;
+    background: #fff;
+    font-size: 11pt;
+  }
+
+  .profile {
+    padding-block: 20px;
+  }
+
+  a {
+    color: inherit;
+  }
+}

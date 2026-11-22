@@ -665,7 +665,15 @@ svg text.blab{font-size:32px} svg text.by{fill:var(--y-t)} svg text.bz{fill:var(
 </style>
 </head>
 <body>
-<div id="stage" class="idle" style="transform: translate(0px, 113.094px) scale(0.469271);">
+<div id="stage">
+<script>
+(() => {
+  const stage=document.currentScript.parentElement;
+  function fit(){if(document.documentElement.classList.contains('print'))return;const w=innerWidth,h=innerHeight,k=Math.min(w/1920,h/1080);stage.style.transform=`translate(${(w-1920*k)/2}px,${(h-1080*k)/2}px) scale(${k})`}
+  fit();
+  addEventListener('resize',fit);
+})();
+</script>
 <svg width="0" height="0" style="position:absolute"><defs>
  <marker id="arr" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M1 1L11 6 1 11Z" fill="var(--muted)"></path></marker>
  <marker id="arrI" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M1 1L11 6 1 11Z" fill="var(--ink)"></path></marker>
@@ -673,7 +681,7 @@ svg text.blab{font-size:32px} svg text.by{fill:var(--y-t)} svg text.bz{fill:var(
 </defs></svg>
 
 <!-- =============== 1 · Title =============== -->
-<section class="slide" id="s1" data-nofoot="" data-cur="0">
+<section class="slide active" id="s1" data-nofoot="" data-cur="0">
  <div class="ttl">
   <div class="tleft">
    <h1 class="tbig">Exponential Quantum Advantage<br>in Number-on-Forehead<br>Communication</h1>
@@ -1717,7 +1725,7 @@ M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist
 </section>
 
 <!-- =============== 30 · Completing the corruption bound =============== -->
-<section class="slide active ge1 ge2 ge3" id="s30" data-builds="all" data-sec="5" data-cur="3">
+<section class="slide ge1 ge2 ge3" id="s30" data-builds="all" data-sec="5" data-cur="3">
  <div class="kicker">Corruption bound · conclusion</div>
  <h1>Completing the corruption bound</h1>
  <div class="body">
@@ -1834,7 +1842,7 @@ Second, can we prove an exponential separation for more than three players?</p>
 </section>
 
 <!-- overlays -->
-<footer id="foot" class=""><nav id="road"><span class="done">Model</span><span class="done">Result</span><span class="done">Problem and protocol</span><span class="done">Lower-bound setup</span><span class="cur">Corruption bound</span><span class="">Open problems</span></nav><span id="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span><span id="pg">30 / 32</span></footer>
+<footer id="foot" class="hide"><nav id="road"><span class="done">Model</span><span class="done">Result</span><span class="done">Problem and protocol</span><span class="done">Lower-bound setup</span><span class="cur">Corruption bound</span><span class="">Open problems</span></nav><span id="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span><span id="pg">1 / 32</span></footer>
 <div id="guide">webcam</div>
 <div id="laser" style="left: 1892.3px; top: 36.0266px;"></div>
 <div id="notes"><div class="nh"><span>slide 30 of 32</span><span>click 3 of 3</span><span id="nclock">51:38</span></div><p class="" data-cue="start">We can now combine the two cases. The regular pieces contribute at most alpha times their total mu-zero probability, plus additive errors. The sparse pieces contribute an amount exponentially small in d.</p><p class="" data-cue="click 1">Increasing d makes the sparse contribution smaller, but it also increases the number of pieces and therefore the accumulated error.</p><p class="" data-cue="click 2">We balance these effects by choosing d to be the sixteenth root of m. This gives the exponentially small error needed for our corruption bound.</p><p class="cur" data-cue="click 3">Summing over accepting transcripts, as we did earlier, then gives the classical lower bound even when the players can interact for arbitrarily many rounds.</p></div>
@@ -2147,7 +2155,6 @@ renderMathInElement(document.getElementById('stage'),{
   function go(i,k){i=Math.max(0,Math.min(slides.length-1,i));const ch=i!==cur;cur=i;step=k==null?0:Math.min(k,nsteps(slides[cur]));show(ch)}
   function next(){if(!t0)t0=Date.now();if(builds&&step<nsteps(slides[cur])){step++;show(false)}else if(cur<slides.length-1)go(cur+1,0)}
   function prev(){if(builds&&slides[cur].dataset.builds!=='all'&&step>0){step--;show(false)}else if(cur>0)go(cur-1,nsteps(slides[cur-1]))}
-  function fit(){if(document.documentElement.classList.contains('print'))return;const w=innerWidth,h=innerHeight,k=Math.min(w/1920,h/1080);stage.style.transform=`translate(${(w-1920*k)/2}px,${(h-1080*k)/2}px) scale(${k})`}
   function theme(t){document.documentElement.dataset.theme=t;try{localStorage.setItem('qcc-theme',t)}catch(e){}}
   function presenter(){
     if(!pw||pw.closed)return;const d=pw.document,s=slides[cur],nx=slides[cur+1];
@@ -2186,7 +2193,7 @@ renderMathInElement(document.getElementById('stage'),{
     else if(k==='Escape'){stage.classList.remove('notes','help','laser','guide');buf=''}
     if(!/^[0-9]$/.test(k)&&k!=='Enter')buf='';
   }
-  addEventListener('keydown',key);addEventListener('resize',fit);
+  addEventListener('keydown',key);
   stage.addEventListener('click',e=>{if(e.target.closest('#notes,#help,a'))return;next()});
   let idle=null;addEventListener('mousemove',()=>{stage.classList.remove('idle');clearTimeout(idle);idle=setTimeout(()=>stage.classList.add('idle'),2500)});
   stage.addEventListener('mousemove',e=>{const r=stage.getBoundingClientRect(),k=r.width/1920,l=document.getElementById('laser');l.style.left=(e.clientX-r.left)/k+'px';l.style.top=(e.clientY-r.top)/k+'px'});
@@ -2196,7 +2203,7 @@ renderMathInElement(document.getElementById('stage'),{
   if(q.has('print')){document.documentElement.classList.add('print');slides.forEach(s=>paint(s,nsteps(s)));return}
   const m=/^#s(\d+)(?:\.(\d+))?$/.exec(location.hash);
   cur=m?Math.max(0,Math.min(slides.length-1,+m[1]-1)):0;step=m&&m[2]?Math.min(+m[2],nsteps(slides[cur])):0;
-  fit();show(true);
+  show(true);
   window.deck={go,next,prev,nsteps:i=>nsteps(slides[i]),count:slides.length};
 })();
 </script>
